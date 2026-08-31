@@ -1,4 +1,4 @@
-# NCRC Physics Runtime / Reward Lab
+# Issac Sim Physics Runtime / Reward Lab
 
 Target baseline: Isaac Sim 5.1, PhysX SDK 5.6.1, Omniverse PhysX 107.3, CPU headless.
 
