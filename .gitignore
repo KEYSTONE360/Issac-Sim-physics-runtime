@@ -1,0 +1,32 @@
+# User/NCRC artifacts and experiment state
+*.pt
+*.pth
+*.onnx
+*.npz
+*.mp4
+/presets/user/
+/incoming/
+/runs/
+/database/
+/backups/
+/logs/
+/benchmark_profiles/
+
+# Generated and packaged outputs
+/generated/
+/build/
+/dist/
+/native_runtime/build/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Downloaded evidence; exact revisions are documented separately
+/evidence/official/isaaclab_reference/
+/evidence/papers/
+
+# IDE/OS
+.vs/
+.vscode/
+.DS_Store
+Thumbs.db

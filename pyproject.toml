@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ncrc-reward-lab"
+version = "0.1.0"
+description = "Experiment Intelligence & Reward Optimization Workbench for NCRC"
+requires-python = ">=3.11"
+dependencies = ["PyYAML>=6.0", "numpy>=2.0", "mujoco==3.12.0", "onnxruntime==1.29.0", "onnx==1.20.1"]
+
+[project.scripts]
+ncrc-lab = "ncrc_lab.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

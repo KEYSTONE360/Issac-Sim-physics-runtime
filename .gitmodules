@@ -1,0 +1,6 @@
+[submodule "evidence/official/PhysX-107.3"]
+	path = evidence/official/PhysX-107.3
+	url = https://github.com/NVIDIA-Omniverse/PhysX.git
+[submodule "engine/vendor/mujoco_menagerie"]
+	path = engine/vendor/mujoco_menagerie
+	url = https://github.com/google-deepmind/mujoco_menagerie.git
