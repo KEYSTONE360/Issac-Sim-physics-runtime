@@ -7,8 +7,9 @@
 배포 폴더의 `NCRC-Physics-Runtime.exe`를 실행하고 번호를 선택합니다.
 
 1. PhysX native self-test: 실제 PxFoundation/PxPhysics/PxScene, rigid body, contact, articulation/joint state를 검사합니다.
-2. H1 로컬 정책 평가: `env.yaml` 경로와 `policy.onnx` 경로, 반복 횟수를 입력합니다.
-3. env 잠금 검증: 최초 제공 H1 YAML과 reward 이외의 모든 값을 정확 비교합니다.
+2. 엔진 교차검증: PhysX 반복 실행, 반-암시적 해석해, MuJoCo 일치 장면을 비교합니다.
+3. H1 로컬 정책 평가: `env.yaml` 경로와 `policy.onnx` 경로, 반복 횟수를 입력합니다.
+4. env 잠금 검증: 최초 제공 H1 YAML과 reward 이외의 모든 값을 정확 비교합니다.
 
 전체 평가는 YAML의 `scene.num_envs=4096`, `sim.dt=0.005`, `decimation=4`를 임의로 줄이지 않습니다. 렌더러와 CUDA는 사용하지 않습니다.
 
@@ -32,6 +33,8 @@ ncrc-lab experiments list
 ncrc-lab best
 ncrc-lab recommend --mode isolation
 ```
+
+사용자 제공 YAML/ONNX/PT와 실험 데이터는 GitHub에 포함하지 않습니다. 새로 복제한 저장소에서는 위 `environment set-default` 명령으로 기준 YAML을 먼저 등록한 뒤 `scripts\build_portable.ps1`을 실행하십시오. 로컬 배포본에는 이미 등록된 기준 YAML이 포함되어 있습니다.
 
 Place official starter code under `ncrc_source/` and current official rule files under `rules/`, then run `ncrc-lab analyze-source`. Until those files are supplied, their status remains `UNKNOWN`/`NOT_AVAILABLE`.
 
