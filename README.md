@@ -1,19 +1,19 @@
 # NCRC Physics Runtime / Reward Lab
 
-목표 기준: Isaac Sim 5.1, PhysX SDK 5.6.1, Omniverse PhysX 107.3, CPU headless.
+Target baseline: Isaac Sim 5.1, PhysX SDK 5.6.1, Omniverse PhysX 107.3, CPU headless.
 
-## 가장 쉬운 실행
+## Simplest way to run
 
-배포 폴더의 `NCRC-Physics-Runtime.exe`를 실행하고 번호를 선택합니다.
+Run `NCRC-Physics-Runtime.exe` in the distribution folder and select a number.
 
-1. PhysX native self-test: 실제 PxFoundation/PxPhysics/PxScene, rigid body, contact, articulation/joint state를 검사합니다.
-2. 엔진 교차검증: PhysX 반복 실행, 반-암시적 해석해, MuJoCo 일치 장면을 비교합니다.
-3. H1 로컬 정책 평가: `env.yaml` 경로와 `policy.onnx` 경로, 반복 횟수를 입력합니다.
-4. env 잠금 검증: 최초 제공 H1 YAML과 reward 이외의 모든 값을 정확 비교합니다.
+1. PhysX native self-test: verifies the actual PxFoundation/PxPhysics/PxScene path, rigid bodies, contacts, articulation, and joint state.
+2. Engine cross-validation: compares repeated PhysX runs, a semi-implicit analytic solution, and a matched MuJoCo scene.
+3. H1 local policy evaluation: accepts an `env.yaml` path, a `policy.onnx` path, and a repetition count.
+4. Environment-lock validation: compares every non-reward value exactly against the initially supplied H1 YAML.
 
-전체 평가는 YAML의 `scene.num_envs=4096`, `sim.dt=0.005`, `decimation=4`를 임의로 줄이지 않습니다. 렌더러와 CUDA는 사용하지 않습니다.
+Full evaluation does not arbitrarily reduce `scene.num_envs=4096`, `sim.dt=0.005`, or `decimation=4` from the YAML. Rendering and CUDA are not used.
 
-주의: native PhysX H1 전체 articulation 이식은 개발 중입니다. 현재 메뉴 1은 PhysX native 검증 경로이고 메뉴 2의 전체 H1 정책 loop는 MuJoCo CPU 보조 백엔드입니다. 결과 JSON에 이 구분과 미지원 항목이 기록되며 공식 NCRC 점수로 표시하지 않습니다.
+Important: the complete H1 articulation has not yet been ported to the native PhysX runtime. Menu item 1 exercises the native PhysX validation path, while menu item 3 runs the full H1 policy loop through the auxiliary MuJoCo CPU backend. Result JSON explicitly records this distinction and unsupported items, and never labels the result as an official NCRC score.
 
 Experiment Intelligence & Reward Optimization Workbench for NCRC H1/Go2 reward experiments.
 
@@ -34,7 +34,7 @@ ncrc-lab best
 ncrc-lab recommend --mode isolation
 ```
 
-사용자 제공 YAML/ONNX/PT와 실험 데이터는 GitHub에 포함하지 않습니다. 새로 복제한 저장소에서는 위 `environment set-default` 명령으로 기준 YAML을 먼저 등록한 뒤 `scripts\build_portable.ps1`을 실행하십시오. 로컬 배포본에는 이미 등록된 기준 YAML이 포함되어 있습니다.
+User-supplied YAML/ONNX/PT files and experiment data are not committed to GitHub. In a fresh clone, first register the baseline YAML with the `environment set-default` command above, then run `scripts\build_portable.ps1`. The local packaged build already contains the registered baseline YAML.
 
 Place official starter code under `ncrc_source/` and current official rule files under `rules/`, then run `ncrc-lab analyze-source`. Until those files are supplied, their status remains `UNKNOWN`/`NOT_AVAILABLE`.
 
